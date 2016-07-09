@@ -9,6 +9,7 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap for stylesheets
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap_form'
 gem 'autoprefixer-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

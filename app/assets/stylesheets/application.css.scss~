@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require rails_bootstrap_forms
+ */
+
+
+@import "bootstrap";
+
+.navbar {
+  background: black;
+
+  .navbar-brand {
+    padding-top: 3.5px;
+  }
+
+  .link_prop {
+    color: white;
+    font-size: 15px;
+  }
+
+  .padding-top {
+    padding-top: 18px;
+  }
+ 
+}
+
+#container_custom {
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100%;
+
+  .btn {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+}
+
+#block {
+  padding-left: 500px;
+  padding-top: 50px;
+  width: 60%;
+}
+
+#tabs {
+  padding-top: 20px;
+}
+
+#h3_custom {
+  text-align: center;
+  padding-top: 25px;
+}
+
+#question-block {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+}
+

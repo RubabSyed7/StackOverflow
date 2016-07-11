@@ -1,0 +1,14 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link to "sample app", '#', id:
+	  <nav>
+	    <ul class="nav pull-right">
+	      <li><%= link to "Home", '#' '#'
+		      <li><%= link to "Help",
+			      <li><%= link to "Sign in", '#'
+				      </ul>
+	  </nav>
+    </div>
+  </div>
+  </header>

@@ -1,0 +1,12 @@
+<% if any_answer?(question.id) %>
+  <h2>Answers</h2>
+  <hr>
+ <div id="answer-block">
+  <% relevant_answers(question.id).each do |answer| %>
+  <div id="answer">
+    * <%= answer %>
+    <div class="btn btn-success pull-right"><%= link_to "Accept", class: "link_prop" %></div>
+  </div>
+  <% end %>
+  <% end %>
+</div>

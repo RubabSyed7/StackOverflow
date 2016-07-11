@@ -1,0 +1,28 @@
+<div id="container_custom">
+  <ul class="nav nav-tabs" id="tabs">
+    <li><%= link_to "Log in", session_path("user") %></li> <!-- add sign up path -->
+    <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
+  </ul>
+</div>
+
+<h3 id="h3_custom">Stack Overflow is part of the Stack Exchange network of 156 Q&A communities</h3>
+<div id="block">
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+    <%= f.email_field :email, autofocus: true %>
+  
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+  <% end %>
+  <%= render "users/shared/links" %>
+</div>
+

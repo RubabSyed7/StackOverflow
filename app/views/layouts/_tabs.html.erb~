@@ -1,6 +1,0 @@
-<div id="container_custom">
-  <ul class="nav nav-tabs">
-    <li><%= link_to "Log in", session_path("user") %></li> <!-- add sign up path -->
-    <li class="active"><%= link_to "Sign up", "#" %></li>
-  </ul>
-</div>

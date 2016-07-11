@@ -1,3 +1,0 @@
-rvm --create --ruby-version ruby-1.9.3@my-gemset
-rvm --default use 2.3.0
-rvm install 2.3.0

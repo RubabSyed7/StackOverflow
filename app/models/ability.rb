@@ -3,11 +3,9 @@ class Ability
 
   def initialize(user)
     user ||= User.new # handled by current_user
-
-    if user.has_role? :registered
-      can [:update, :destroy], Question, user_id: user.id
-      can [:update, :destroy], Answer, user_id: user.id
-    end
+   
+    can [:update, :destroy], Question, user_id: user.id
+    can [:update, :destroy], Answer, user_id: user.id
   end
     # Define abilities for the passed in user here. For example:
     #

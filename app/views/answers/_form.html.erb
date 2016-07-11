@@ -1,0 +1,24 @@
+<hr>
+<h2 style="padding-left:100px"> Your Answer </h2>
+<div id="question-block">
+  <%= bootstrap_form_for([question, answer]) do |f| %>
+  <% if answer.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(question.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+    <ul>
+      <% answer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+  </div>
+  <% end %>
+  <%= f.text_area :text, :rows => "10" %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+</div>

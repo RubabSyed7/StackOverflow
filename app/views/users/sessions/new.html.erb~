@@ -1,0 +1,22 @@
+<div id="container_custom">
+  <ul class="nav nav-tabs" id="tabs">
+    <li class="active"><%= link_to "Log in", session_path("user") %></li> <!-- add sign up path -->
+    <li><%= link_to "Sign up", new_user_registration_path %></li>
+  </ul>
+</div>
+<h3 id="h3_custom">Stack Overflow is part of the Stack Exchange network of 156 Q&A communities</h3>
+<div id="block">
+  <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.email_field :email, autofocus: true %>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me %>
+    <% end -%>
+  
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <% end %>
+  
+  <%= render "users/shared/links" %>
+</div>

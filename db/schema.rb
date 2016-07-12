@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711090815) do
+ActiveRecord::Schema.define(version: 20160711220028) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",        limit: 65535
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(version: 20160711090815) do
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "title"
-    t.text     "text",         limit: 65535
-    t.integer  "selected_ans"
+    t.text     "text",       limit: 65535
     t.integer  "user_id"
+    t.integer  "answers_id"
+    t.index ["answers_id"], name: "index_questions_on_answers_id", using: :btree
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 

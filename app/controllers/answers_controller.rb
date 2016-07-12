@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, :set_answer
+  before_action :authenticate_user!
   
   def create
+    @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
     @answer.question_id = params[:question_id]
 
@@ -18,11 +19,7 @@ class AnswersController < ApplicationController
 
   private
 
-  def set_answer
-    @answer = Answer.new(answer_params)
-  end
-
   def answer_params
-    params.require(:answer).permit(:text, :question_id)
+    params.require(:answer).permit(:text)
   end
 end

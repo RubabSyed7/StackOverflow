@@ -9,9 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super do |user|
-      user.update_attributes(role: :registered)
-    end
+    super 
   end
 
   # DELETE /resource/sign_out

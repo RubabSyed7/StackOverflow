@@ -10,4 +10,8 @@ module AnswersHelper
   def accept?(answer)
   	current_user.id == answer.question.user_id
   end
+
+  def accepted?(question)
+  	question.answers_id != nil
+  end
 end

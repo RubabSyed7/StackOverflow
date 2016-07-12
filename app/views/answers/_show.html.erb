@@ -5,12 +5,16 @@
 		<% relevant_answers(question.id).each do |answer| %>
 			<div id="answer">
 				* <%= answer.text %>
-				<% if accept?(answer) %>
-					<div class="btn btn-success pull-right">
-						<%= link_to "Accept", controller: question, action: accept(question, answer.id) %>
-					</div>
+				<% if accepted?(question) %>
+					<h3 class="pull-right">Accepted</h3>
+				<% else %>
+					<% if accept?(answer) %>
+						<div class="btn btn-success pull-right">
+							<%= link_to "Accept", accept_question_answer_path(question, answer) %>
+						</div>
+					<% end %>
 				<% end %>	
 			</div>	
-	 <% end %>
+	  <% end %>
 	</div>	
 <% end %>

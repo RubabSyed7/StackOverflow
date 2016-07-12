@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :questions do
-    resources :answers
+    resources :answers do
+      get 'accept', on: :member
+    end
   end
   devise_for :users, controllers: {
                registrations: 'users/registrations',

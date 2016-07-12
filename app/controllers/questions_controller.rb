@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
-
+  load_resource 
   # GET /questions
   # GET /questions.json
   def index
@@ -15,17 +14,16 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    authorize! :update, @question
   end
 
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
     @question.user_id = current_user.id
     
     respond_to do |format|
@@ -42,6 +40,8 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    authorize! :update, @question
+    
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -56,6 +56,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    authorize! :destroy, @question
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
@@ -64,13 +65,9 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def question_params
-      params.require(:question).permit(:title, :text)
-    end
+  def question_params
+     params.require(:question).permit(:title, :text)
+  end
 end

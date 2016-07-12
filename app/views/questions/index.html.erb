@@ -8,7 +8,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td id="question">-> <%= link_to question.title, "#{questions_url}/#{question.id}" %></td>
+        <td id="question">-> <%= link_to question.title, questions_path(question) %></td>
       </tr>
     <% end %>
   </tbody>

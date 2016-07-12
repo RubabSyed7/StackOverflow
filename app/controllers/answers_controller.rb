@@ -22,7 +22,6 @@ class AnswersController < ApplicationController
 
   # GET /questions/id/answer/id/accept 
   def accept
-    
     respond_to do |format|
       if @question.update(answers_id: params[:id])
         format.html { redirect_to questions_path, notice: "Answer successfully accepted" }

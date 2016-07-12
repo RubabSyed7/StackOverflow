@@ -6,9 +6,4 @@ class Answer < ApplicationRecord
   validates :question, presence: true
   validates_associated :user
   validates_associated :question
-
-  # POST /questions/id/answers/id/accept
-  def accept
-  	hhajkh
-  end
 end

@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
   load_resource :question, find_by: :id
   load_resource :answer, find_by: :id
-  authorize_resource :comment only: [:edit, :update, :destroy]
+  load_resource :comment, through: :question
+	before_action :set_commentable, only: :create
 
   # GET /questions
   # GET /questions.json
@@ -67,7 +68,7 @@ class CommentsController < ApplicationController
   end
 
   def set_commentable
-    if @answer
+    if @question
       @comment.commentable = @question
     else
       @comment.commentable = @answer

@@ -6,11 +6,7 @@ module AnswersHelper
   def any_answer?(q_id)
     Answer.find_by(question_id: q_id)
   end
-
-  def accept?(answer)
-  	current_user == answer.question.user
-  end
-
+  
   def accepted?(question)
   	question.answers_id != nil
   end

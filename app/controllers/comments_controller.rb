@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
 
   # GET /questions/new
   def new
-    @comment = Comment.new
   end
 
   # GET /questions/1/edit
@@ -28,8 +27,6 @@ class CommentsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @comment = Comment.new(comment_params)
-    set_commentable
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
@@ -74,5 +71,4 @@ class CommentsController < ApplicationController
       @comment.commentable = @answer
     end
   end
-
 end

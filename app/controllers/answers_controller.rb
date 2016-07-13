@@ -2,10 +2,9 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   load_resource :question
   load_resource :answer, through: :question
-  authorize_resource
+  authorize_resource 
 
-  # POST /answers
-  # POST /answers.json
+  # POST /questions/id/answers
   def create
     @answer.user = current_user
     @answer.question = @question
@@ -19,7 +18,7 @@ class AnswersController < ApplicationController
     end
   end
 
-  #add update and destroy method
+  # PATCH/PUT /questions/id/answers/1
   def update
     respond_to do |format|
       if @answer.update(answer_params)

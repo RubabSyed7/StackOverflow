@@ -6,8 +6,8 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer.user_id = current_user.id
-    @answer.question_id = params[:question_id]
+    @answer.user = current_user
+    @answer.question = @question
 
     respond_to do |format|
       if @answer.save

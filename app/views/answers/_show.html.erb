@@ -1,21 +1,21 @@
 <% if any_answer?(question.id) %>
-	<h2 id="padding-left">Answers</h2>
-	<hr>
-	<div id="answer-block">
-		<% relevant_answers(question.id).each do |answer| %>
-			<div id="answer">
-				* <%= answer.text %>
-				 </br><%= link_to "add a comment", new_comment_path(question_id: question.id, answer_id: answer.id) %>
-				<% if accepted?(question) %>
-					<h3 class="pull-right">Accepted</h3>
-				<% else %>
-				<% if accept?(answer) %>
-						<div class="btn btn-success pull-right">
-							<%= link_to "Accept", accept_question_answer_path(question, answer) %>
-						</div>
-					<% end %>
-				<% end %>	
-			</div>	
+  <h2 id="padding-left">Answers</h2>
+  <hr>
+  <div id="answer-block">
+    <% relevant_answers(question.id).each do |answer| %>
+      <div id="answer">
+	* <%= answer.text %>
+        </br><%= link_to "add a comment", new_comment_path(question_id: question.id, answer_id: answer.id) %>
+	<% if accepted?(question) %>
+	  <h3 class="pull-right">Accepted</h3>
+	<% else %>
+	  <% if accept?(answer) %>
+	    <div class="btn btn-success pull-right">
+	      <%= link_to "Accept", accept_question_answer_path(question, answer) %>
+	    </div>
 	  <% end %>
-	</div>	
+	  <% end %>	
+      </div>	
+    <% end %>
+  </div>	
 <% end %>

@@ -28,13 +28,7 @@ class CommentsController < ApplicationController
   # POST /questions.json
   def create
   	@comment = Comment.new(comment_params)
-
-  	if @answer
-  		@comment.commentable = @question
-  	else
-  		@comment.commentable = @answer
-  	end
-
+  	set_commentable
   	@comment.user = current_user
     respond_to do |format|
       if @comment.save
@@ -60,7 +54,7 @@ class CommentsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question.destroy
+    @comment.destroy
     respond_to do |format|
       format.html { redirect_to questions_path, notice: 'Question was successfully destroyed.' }
     end
@@ -69,6 +63,15 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-     params.require(:comment).permit(:text)
+    params.require(:comment).permit(:text)
   end
+
+  def set_commentable
+  	if @answer
+  		@comment.commentable = @question
+  	else
+  		@comment.commentable = @answer
+  	end
+  end
+
 end

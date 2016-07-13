@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   load_resource :question
   load_resource :answer, through: :question
+  authorize_resource
 
   # POST /answers
   # POST /answers.json
@@ -14,6 +15,17 @@ class AnswersController < ApplicationController
         format.html { redirect_to questions_path }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  #add update and destroy method
+  def update
+    respond_to do |format|
+      if @answer.update(answer_params)
+        format.html { redirect_to questions_path, notice: 'Question was successfully updated.' }
+      else
+        format.html { render :edit }
       end
     end
   end

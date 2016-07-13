@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   load_resource :question, find_by: :id
   load_resource :answer, find_by: :id
   load_resource :comment, through: :question
-	before_action :set_commentable, only: :create
+  before_action :set_commentable, only: :create
 
   # GET /questions
   # GET /questions.json

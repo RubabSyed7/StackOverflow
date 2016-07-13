@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
-	load_resource :question, find_by: :id
-	load_resource :answer, find_by: :id
-	authorize_resource :comment only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
+  load_resource :question, find_by: :id
+  load_resource :answer, find_by: :id
+  authorize_resource :comment only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 
   # GET /questions/new
   def new
-  	@comment = Comment.new
+    @comment = Comment.new
   end
 
   # GET /questions/1/edit
@@ -27,9 +27,9 @@ class CommentsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-  	@comment = Comment.new(comment_params)
-  	set_commentable
-  	@comment.user = current_user
+    @comment = Comment.new(comment_params)
+    set_commentable
+    @comment.user = current_user
     respond_to do |format|
       if @comment.save
         format.html { redirect_to questions_path, notice: 'Comment was successfully posted.' }
@@ -67,11 +67,11 @@ class CommentsController < ApplicationController
   end
 
   def set_commentable
-  	if @answer
-  		@comment.commentable = @question
-  	else
-  		@comment.commentable = @answer
-  	end
+    if @answer
+      @comment.commentable = @question
+    else
+      @comment.commentable = @answer
+    end
   end
 
 end

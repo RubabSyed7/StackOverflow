@@ -2,33 +2,31 @@ class CommentsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
 	load_resource :question, find_by: :id
 	load_resource :answer, find_by: :id
-	authorize_resource :comment only: [:edit, :update, :destroy]
+	load_resource :comment, through: :question
+	before_action :set_commentable, only: :create
 
-  # GET /questions
-  # GET /questions.json
+  # GET /comments
+  # GET /comments.json
   def index
     @comments = Comment.all
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
+  # GET /comments/1
+  # GET /comments/1.json
   def show
   end
 
-  # GET /questions/new
+  # GET /comments/new
   def new
-  	@comment = Comment.new
   end
 
-  # GET /questions/1/edit
+  # GET /comments/1/edit
   def edit
   end
 
-  # POST /questions
-  # POST /questions.json
+  # POST /comments
+  # POST /comments.json
   def create
-  	@comment = Comment.new(comment_params)
-  	set_commentable
   	@comment.user = current_user
     respond_to do |format|
       if @comment.save
@@ -39,8 +37,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
+  # PATCH/PUT /comments/1
+  # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -51,8 +49,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
+  # DELETE /comments/1
+  # DELETE /comments/1.json
   def destroy
     @comment.destroy
     respond_to do |format|
@@ -67,7 +65,7 @@ class CommentsController < ApplicationController
   end
 
   def set_commentable
-  	if @answer
+  	if @question
   		@comment.commentable = @question
   	else
   		@comment.commentable = @answer

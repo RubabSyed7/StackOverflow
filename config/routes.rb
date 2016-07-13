@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     resources :answers do
       get 'accept', on: :member
     end
+    resources :comments
   end
-
-  resources :comments
   
   devise_for :users, controllers: {
                registrations: 'users/registrations',

@@ -6,6 +6,8 @@
       <%= link_to "edit", edit_question_path(@question) %> 
     </div>
   <% end %>
+  <%= link_to "add a comment", new_comment_path(question_id: @question.id) %>
 <%= render "/answers/show", {question: @question} %>
 <%= render "/answers/form", {question: @question, answer: Answer.new} %>
+
 

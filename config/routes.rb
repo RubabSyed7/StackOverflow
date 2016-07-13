@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       get 'accept', on: :member
     end
   end
+
+  resources :comments
+  
   devise_for :users, controllers: {
                registrations: 'users/registrations',
                sessions: 'users/sessions',

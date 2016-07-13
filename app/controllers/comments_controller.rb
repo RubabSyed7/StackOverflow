@@ -71,5 +71,4 @@ class CommentsController < ApplicationController
       @comment.commentable = @answer
     end
   end
-
 end

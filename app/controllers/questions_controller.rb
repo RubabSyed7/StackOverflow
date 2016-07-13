@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
   load_resource 
+  authorize_resource only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -19,7 +20,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    authorize! :update, @question
   end
 
   # POST /questions
@@ -38,7 +38,6 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    authorize! :update, @question
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -51,7 +50,6 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    authorize! :destroy, @question
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }

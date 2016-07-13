@@ -3,12 +3,12 @@ module AnswersHelper
     Answer.where(question_id: q_id)
   end
 
-  def any_answer?(question_id)
-    Answer.find_by(question_id: question_id)
+  def any_answer?(q_id)
+    Answer.find_by(question_id: q_id)
   end
 
   def accept?(answer)
-  	current_user.id == answer.question.user_id
+  	current_user == answer.question.user
   end
 
   def accepted?(question)

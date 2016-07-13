@@ -12,10 +12,8 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         format.html { redirect_to questions_path }
-        format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
   end

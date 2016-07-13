@@ -6,9 +6,7 @@ class Ability
 
     can [:update, :destroy], Question, user_id: user.id
     can [:update, :destroy], Answer, user_id: user.id 
-    can :accept, Answer do |answer|
-    	answer.question.user == user 
-    end
+    can [:update, :destroy], Comment, user_id: user.id
   end
 
 end

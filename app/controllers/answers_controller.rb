@@ -34,9 +34,9 @@ class AnswersController < ApplicationController
   def destroy
     respond_to do |format|
       if @answer.destroy
-        format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+        format.html { redirect_to questions_path, notice: 'Answer was successfully destroyed.' }
       else
-        format.html { redirect_to questions_url, notice: 'Answer was not destroyed.' }
+        format.html { redirect_to questions_path, notice: 'Answer was not destroyed.' }
       end
     end
   end

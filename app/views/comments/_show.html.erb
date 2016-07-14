@@ -2,6 +2,12 @@
 <% relevant_comments(commentable_id, commentable_type).each do |comment| %>
   <div id="comment">
   	<%= comment.text %>
+  	<% if (can? :update, comment) && (can? :destroy, comment) %>
+  		<div>
+  			<%= link_to "delete", comment_path(comment), method: :delete %>
+  			<%= link_to "edit", edit_comment_path(comment) %>
+  		</div>
+  	<% end %>
   </div>	
   </br>
 <% end %>

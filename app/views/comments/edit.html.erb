@@ -1,3 +1,10 @@
 <h1>Editing Comment</h1>
 
-<%= render 'form', comment: @comment %>
+<div id="comment-box">
+<%= bootstrap_form_for(@comment) do |f| %>
+  <%= f.text_area :text, rows: "2" %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

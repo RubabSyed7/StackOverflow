@@ -29,6 +29,14 @@ class AnswersController < ApplicationController
     end
   end
 
+  # DELETE /questions/id/answer/id
+  # DELETE /questions/id/answer/id.json
+  def destroy
+    @answer.destroy
+    respond_to do |format|
+      format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+    end
+  end
   # GET /questions/id/answer/id/accept 
   def accept
     respond_to do |format|

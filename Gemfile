@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0'
+gem 'rails', '= 5.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap for stylesheets
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'bootstrap_form', '2.4.0'
-gem 'autoprefixer-rails', '6.3.7'
+gem 'bootstrap_form', '= 2.4.0'
+gem 'autoprefixer-rails', '= 6.3.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -30,10 +30,10 @@ group :development do
   gem 'byebug'
 end
 #  For Authentication
-gem 'devise', '4.2.0'
+gem 'devise', '= 4.2.0'
 # For Authorization
 gem 'cancancan', '~> 1.9'
 # For Pagination
-gem 'will_paginate', '3.1.0'
+gem 'will_paginate', '= 3.1.0'
 # For debugging
-gem 'pry', '0.10.3'
+gem 'pry', '= 0.10.3'

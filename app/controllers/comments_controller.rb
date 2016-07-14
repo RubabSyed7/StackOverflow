@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
+  before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_commentable, only: :create
 
   # GET /comments/new
   def new
   end
-  
+
   # GET /comments/1/edit
   def edit
   end

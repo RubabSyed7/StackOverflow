@@ -21,7 +21,7 @@
 		<% else %>
 	  	  <% if can? :accept, answer %>
 	    	<div class="btn btn-success pull-right">
-	      	  <%= link_to "Accept", accept_question_answer_path(@question, answer) %>
+	      	  <%= link_to "Accept", accept_question_answer_path(@question, answer), method: :patch %>
 	    	</div>
 	  	  <% end %>
 	 	<% end %>	

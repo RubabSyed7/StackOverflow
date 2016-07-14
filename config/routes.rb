@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :questions do
     resources :answers do
-      get 'accept', on: :member
+      patch 'accept', on: :member
     end
   end
   resources :comments

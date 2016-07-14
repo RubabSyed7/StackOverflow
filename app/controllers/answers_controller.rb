@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
     end
   end
 
-  # GET /questions/id/answer/id/accept 
+  # PATCH /questions/id/answer/id/accept 
   def accept
     respond_to do |format|
       if @question.update(answers_id: params[:id])

@@ -1,10 +1,10 @@
 <div id="comment-box">
-<%= bootstrap_form_for(comment) do |f| %>
-  <%= f.text_area :text, rows: "2" %>
-  <%= f.hidden_field :commentable_id, value: commentable_id %>
-  <%= f.hidden_field :commentable_type, value: commentable_type %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<%= bootstrap_form_for(comment) do |f| %>
+  	<%= f.text_area :text, rows: "2" %>
+  	<%= f.hidden_field :commentable_id, value: commentable_id %>
+  	<%= f.hidden_field :commentable_type, value: commentable_type %>
+  	<div class="actions">
+    	<%= f.submit %>
+  	</div>
+	<% end %>
 </div>

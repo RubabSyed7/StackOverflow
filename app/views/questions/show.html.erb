@@ -10,8 +10,8 @@
   	<%= render "/comments/show", { commentable_id: @question.id, commentable_type: "Question"} %>
   </div>
   <div id="comment">
- 	 <%= render "/comments/form", { commentable_id: @question.id, comment: Comment.new,   
- 	 	                            commentable_type: "Question" } %> 
+ 	<%= render "/comments/form", { commentable_id: @question.id, comment: Comment.new,   
+ 	 	                           commentable_type: "Question" } %> 
   </div>
 <%= render "/answers/show" %>
 <%= render "/answers/form", {question: @question, answer: Answer.new} %>

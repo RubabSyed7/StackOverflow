@@ -32,11 +32,15 @@ class AnswersController < ApplicationController
   # DELETE /questions/id/answer/id
   # DELETE /questions/id/answer/id.json
   def destroy
-    @answer.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+      if @answer.destroy
+        format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+      else
+        format.html { redirect_to questions_url, notice: 'Answer was not destroyed.' }
+      end
     end
   end
+
   # GET /questions/id/answer/id/accept 
   def accept
     respond_to do |format|

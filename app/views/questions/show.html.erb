@@ -6,10 +6,14 @@
       <%= link_to "edit", edit_question_path(@question) %> 
     </div>
   <% end %>
-  <div style="padding-left:100px">
-  <%= link_to "add a comment", new_question_comment_path(question_id: @question.id) %>
+  <div>
+  	<%= render "/comments/show", { commentable_id: @question.id, commentable_type: "Question"} %>
   </div>
-<%= render "/answers/show", {question: @question} %>
+  <div id="comment">
+ 	 <%= render "/comments/form", { commentable_id: @question.id, comment: Comment.new,   
+ 	 	                            commentable_type: "Question" } %> 
+  </div>
+<%= render "/answers/show" %>
 <%= render "/answers/form", {question: @question, answer: Answer.new} %>
 
 

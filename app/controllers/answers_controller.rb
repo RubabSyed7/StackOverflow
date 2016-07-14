@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to questions_path, notice: 'Question was successfully updated.' }
+        format.html { redirect_to questions_path, notice: 'Answer was successfully updated.' }
       else
         format.html { render :edit }
       end

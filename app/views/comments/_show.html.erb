@@ -1,0 +1,7 @@
+<h3 id="comment">Comments</h3>
+<% relevant_comments(commentable_id, commentable_type).each do |comment| %>
+  <div id="comment">
+  	<%= comment.text %>
+  </div>	
+  </br>
+<% end %>

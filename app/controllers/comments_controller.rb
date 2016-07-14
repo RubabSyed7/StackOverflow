@@ -1,14 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
-  load_resource :question, find_by: :id
-  load_resource :answer, find_by: :id
-  load_resource :comment, through: :question
+  load_and_authorize_resource
   before_action :set_commentable, only: :create
-
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-  end
+  
 
   # GET /comments/new
   def new
@@ -25,6 +19,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to questions_path, notice: 'Comment was successfully posted.' }
+        format.js
       else
         format.html { render :new }
       end
@@ -55,14 +50,11 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:text, :commentable_id, :commentable_type)
   end
 
   def set_commentable
-    if @question
-      @comment.commentable = @question
-    else
-      @comment.commentable = @answer
-    end
+  	@comment.commentable_type = params[:comment][:commentable_type]
+  	@comment.commentable_id = params[:comment][:commentable_id]
   end
 end

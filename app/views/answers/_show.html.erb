@@ -1,21 +1,24 @@
-<% if any_answer?(question.id) %>
+<% if any_answer? %>
   <h2 id="padding-left">Answers</h2>
   <hr>
   <div id="answer-block">
-    <% relevant_answers(question.id).each do |answer| %>
-    <div id="answer">
-	    * <%= answer.text %>
-      </br><%= link_to "add a comment" %>
-			<% if accepted?(question) %>
-	  		<h3 class="pull-right">Accepted</h3>
-			<% else %>
-	  		<% if can? :accept, answer %>
-	    		<div class="btn btn-success pull-right">
-	      		<%= link_to "Accept", accept_question_answer_path(question, answer) %>
-	    		</div>
-	  		<% end %>
-	 	  <% end %>	
-    </div>	
-   <% end %>
+    <% relevant_answers.each do |answer| %>
+    	<div id="answer">
+	    	* <%= answer.text %>
+      	</br>
+      	<%= render "/comments/show", { commentable_id: answer.id, commentable_type: "Answer" } %>
+      	<%= render "/comments/form", { comment: Comment.new, commentable_id: answer.id, 
+      		                                    commentable_type: "Answer" } %>
+				<% if accepted? %>
+	  			<h3 class="pull-right">Accepted</h3>
+				<% else %>
+	  			<% if can? :accept, answer %>
+	    			<div class="btn btn-success pull-right">
+	      			<%= link_to "Accept", accept_question_answer_path(@question, answer) %>
+	    			</div>
+	  			<% end %>
+	 	  	<% end %>	
+    	</div>	
+   	<% end %>
   </div>	
 <% end %>

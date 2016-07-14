@@ -35,3 +35,5 @@ gem 'devise', '4.2.0'
 gem 'cancancan', '~> 1.9'
 # For Pagination
 gem 'will_paginate', '3.1.0'
+# For debugging
+gem 'pry', '0.10.3'

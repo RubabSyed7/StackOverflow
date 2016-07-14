@@ -1,18 +1,10 @@
-<div id="question-block">
-  <%= bootstrap_form_for(comment, url: question_comments_path(@question.id)) do |f| %>
-    <% if comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this question from being saved:</h2>
-        <ul>
-          <% comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>    
-    <%= f.text_area :text, rows: "4" %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+<div id="comment-box">
+<%= bootstrap_form_for(comment) do |f| %>
+  <%= f.text_area :text, rows: "2" %>
+  <%= f.hidden_field :commentable_id, value: commentable_id %>
+  <%= f.hidden_field :commentable_type, value: commentable_type %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 </div>

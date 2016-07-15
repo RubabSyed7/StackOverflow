@@ -6,11 +6,10 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.paginate(page: params[:page], per_page: 3)
+    @questions = @questions.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /questions/1
-  # GET /questions/1.json
   def show
   end
 
@@ -23,7 +22,6 @@ class QuestionsController < ApplicationController
   end
 
   # POST /questions
-  # POST /questions.json
   def create
     @question.user = current_user
     respond_to do |format|
@@ -36,7 +34,6 @@ class QuestionsController < ApplicationController
   end
 
   # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
@@ -48,7 +45,6 @@ class QuestionsController < ApplicationController
   end
 
   # DELETE /questions/1
-  # DELETE /questions/1.json
   def destroy
     respond_to do |format|
       if  @question.destroy

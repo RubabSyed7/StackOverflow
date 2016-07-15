@@ -1,10 +1,14 @@
 <h2 id="question-block"><%= @question.title %></h2>
   <p id="question"><%= @question.text %></p>
-  <% if (can? :destroy, @question) && (can? :update, @question) %>
-    <div class="pull-right" id="padding-right">
+  <% if can? :destroy, @question %>
+    <div>
       <%= link_to "delete", @question , method: :delete, confirm: "Are you sure?" %>
-      <%= link_to "edit", edit_question_path(@question) %> 
     </div>
+  <% end %>
+  <% if can? :update, @question %>
+    <div>
+      <%= link_to "edit", edit_question_path(@question) %>
+ 	</div>
   <% end %>
   <div>
   	<%= render "/comments/show", { commentable_id: @question.id, commentable_type: "Question"} %>

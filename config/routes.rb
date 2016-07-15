@@ -4,11 +4,11 @@ Rails.application.routes.draw do
       patch 'accept', on: :member
     end
   end
-  resources :comments
+  resources :comments, except: [ :show, :index, :new]
   devise_for :users, controllers: {
                sessions: 'users/sessions',
                passwords: 'users/passwords',
                registrations: 'users/registrations'
-             }
+             }             
   root 'questions#index'
 end

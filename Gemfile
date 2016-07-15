@@ -32,7 +32,7 @@ end
 #  For Authentication
 gem 'devise', '= 4.2.0'
 # For Authorization
-gem 'cancancan', '~> 1.9'
+gem 'cancancan', '= 1.15'
 # For Pagination
 gem 'will_paginate', '= 3.1.0'
 # For debugging

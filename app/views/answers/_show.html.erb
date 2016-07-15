@@ -1,8 +1,8 @@
-<% if any_answer? %>
+<% if @question.answers.any? %>
   <h2 id="padding-left">Answers</h2>
   <hr>
   <div id="answer-block">
-    <% relevant_answers.each do |answer| %>
+    <% @question.answers.each do |answer| %>
       <div id="answer">
 	    * <%= answer.text %>
       	</br>
@@ -16,14 +16,15 @@
       	<%= render "/comments/show", { commentable_id: answer.id, commentable_type: "Answer" } %>
       	<%= render "/comments/form", { commentable_id: answer.id, comment: Comment.new, 
       		                           commentable_type: "Answer" } %>
-		<% if accepted? %>
-	  	  <h3 class="pull-right">Accepted</h3>
-		<% else %>
+		<% if @question.answers_id.nil? %>
 	  	  <% if can? :accept, answer %>
-	    	<div class="btn btn-success pull-right">
-	      	  <%= link_to "Accept", accept_question_answer_path(@question, answer), method: :patch %>
-	    	</div>
-	  	  <% end %>
+		    <div class="btn btn-success pull-right">
+	          <%= link_to "Accept", accept_question_answer_path(@question, answer), method: :patch %>
+	        </div>
+	      <% end %>
+		<% else %>
+	    	<h3 class="pull-right">Accepted</h3>
+	  	 
 	 	<% end %>	
     	</div>	
    	<% end %>

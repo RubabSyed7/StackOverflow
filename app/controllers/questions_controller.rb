@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   def destroy
     respond_to do |format|
-      if  @question.destroy
+      if @question.destroy
         format.html { redirect_to questions_path, notice: 'Question was successfully destroyed.' }
       else
         format.html { redirect_to questions_path, notice: 'Question was not destroyed.' }

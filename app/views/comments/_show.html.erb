@@ -6,14 +6,14 @@
       <% if can? :update, comment %>
         <div>
   	  <%= link_to "edit", edit_comment_path(comment) %>
-  	</div>
+        </div>
       <% end %>
       <% if can? :delete, comment %>
         <div>
   	  <%= link_to "delete", comment_path(comment), method: :delete %>
-	</div>
+        </div>
       <% end %>
     </div>	
-  </br>
+    </br>
   <% end %>
 <% end %>

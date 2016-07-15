@@ -11,19 +11,19 @@
       	    <%= link_to "delete", question_answer_path(@question, answer), method: :delete,  confirm: "Are you sure?" %>
       	    <%= link_to "edit", edit_question_answer_path(@question, answer) %> 
     	  </div>
-    	<% end %>
+        <% end %>
       	<%= render "/comments/show", { commentable_id: answer.id, commentable_type: "Answer" } %>
       	<%= render "/comments/form", { commentable_id: answer.id, comment: Comment.new, 
       		                       commentable_type: "Answer" } %>
         <% if @question.answers_id.nil? %>
-	  <% if can? :accept, answer %>
-	    <div class="btn btn-success pull-right">
-	      <%= link_to "Accept", accept_question_answer_path(@question, answer), method: :patch %>
-	    </div>
+          <% if can? :accept, answer %>
+            <div class="btn btn-success pull-right">
+              <%= link_to "Accept", accept_question_answer_path(@question, answer), method: :patch %>
+            </div>
 	  <% end %>
-	<% else %>
-	  <h3 class="pull-right">Accepted</h3>	 
-	<% end %>	
+        <% else %>
+          <h3 class="pull-right">Accepted</h3>	 
+        <% end %>	
       </div>	
    <% end %>
   </div>	

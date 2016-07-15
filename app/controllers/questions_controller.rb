@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
+  # PATCH /questions/1
   def update
     respond_to do |format|
       if @question.update(question_params)

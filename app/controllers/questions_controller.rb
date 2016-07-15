@@ -1,10 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
-  load_resource 
-  authorize_resource only: [:edit, :update, :destroy]
+  load_and_authorize_resource 
 
   # GET /questions
-  # GET /questions.json
   def index
     @questions = @questions.paginate(page: params[:page], per_page: 3)
   end

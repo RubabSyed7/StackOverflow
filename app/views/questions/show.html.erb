@@ -1,22 +1,21 @@
 <h2 id="question-block"><%= @question.title %></h2>
-  <p id="question"><%= @question.text %></p>
-  <% if can? :destroy, @question %>
-    <div>
-      <%= link_to "delete", @question , method: :delete, confirm: "Are you sure?" %>
-    </div>
-  <% end %>
-  <% if can? :update, @question %>
-    <div>
-      <%= link_to "edit", edit_question_path(@question) %>
- 	</div>
-  <% end %>
+<p id="question"><%= @question.text %></p>
+<% if can? :destroy, @question %>
   <div>
-  	<%= render "/comments/show", { commentable_id: @question.id, commentable_type: "Question"} %>
+    <%= link_to "delete", @question , method: :delete, confirm: "Are you sure?" %>
   </div>
-  <div id="comment">
- 	<%= render "/comments/form", { commentable_id: @question.id, comment: Comment.new,   
- 	 	                           commentable_type: "Question" } %> 
+<% end %>
+<% if can? :update, @question %>
+  <div>
+    <%= link_to "edit", edit_question_path(@question) %>
   </div>
+<% end %>
+<div>
+  <%= render "/comments/show", { commentable_id: @question.id, commentable_type: "Question"} %>
+</div>
+<div id="comment">
+  <%= render "/comments/form", { commentable_id: @question.id, comment: Comment.new, commentable_type: "Question" } %> 
+</div>
 <%= render "/answers/show" %>
 <%= render "/answers/form", {question: @question, answer: Answer.new} %>
 

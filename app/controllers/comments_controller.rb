@@ -8,13 +8,13 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-  	# saving questions/question_id show page reference
-  	session[:return_to] = request.referer 
+  # saving questions/question_id show page reference
+    session[:return_to] = request.referer 
   end
 
   # POST /comments
   def create
-  	set_commentable
+    set_commentable
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
@@ -54,7 +54,7 @@ class CommentsController < ApplicationController
   end
 
   def set_commentable
-  	@comment.commentable_type = params[:comment][:commentable_type]
-  	@comment.commentable_id = params[:comment][:commentable_id]
+    @comment.commentable_type = params[:comment][:commentable_type]
+    @comment.commentable_id = params[:comment][:commentable_id]
   end
 end

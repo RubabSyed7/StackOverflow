@@ -1,0 +1,10 @@
+<hr>
+<h2 id="padding-left"> Your Answer </h2>
+<div id="question-block">
+  <%= bootstrap_form_for([question, answer]) do |f| %>
+    <%= f.text_area :text, rows: "10" %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

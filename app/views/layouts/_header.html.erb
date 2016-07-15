@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div id="container_custom">
+    <nav class="navbar" role="navigation">
+      <div class="navbar-header">
+	<div class="navbar-brand">
+	  <%= link_to image_tag("Stack_Exchange_Logo", size: "200x40"), questions_path  %>
+	</div>
+      </div>
+
+      <div>
+	<form class="navbar-form navbar-right" role="search">
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Search Q/A">
+	  </div>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+	  <% if user_signed_in? %>
+	    <li class="link_prop padding-top">user <%= current_user.id %></li>
+	    <li><%= link_to "log out", destroy_user_session_path, :class => "link_prop", method: :delete %></li>
+	  <% else %>
+	    <li><%= link_to "log in", new_user_session_path, class: "link_prop" %></li>
+	    <li><%= link_to "sign up", new_user_registration_path, class: "link_prop" %></li>
+	  <% end %>
+	</ul>
+      </div>
+    </nav>
+    
+    <div class="row">
+      <div class="col-md-4">
+      	<%= image_tag("stackoverflow", size: "350x80") %>
+      </div>
+      <div class="col-md-8"> 
+        <button class="btn pull-right"><%= link_to "Questions", questions_path %></button>
+        <button class="btn pull-right"><%= link_to "Ask Question", new_question_path %></button>
+      </div>
+    </div>
+  </div>
+</div>

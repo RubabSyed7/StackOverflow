@@ -1,0 +1,19 @@
+<% if Comment.relevant_comments(commentable_id, commentable_type).any? %>
+  <h3 id="comment">Comments</h3>
+  <% Comment.relevant_comments(commentable_id, commentable_type).each do |comment| %>
+    <div id="comment">
+      <%= comment.text %>
+      <% if can? :update, comment %>
+        <div>
+  	  <%= link_to "edit", edit_comment_path(comment) %>
+        </div>
+      <% end %>
+      <% if can? :delete, comment %>
+        <div>
+  	  <%= link_to "delete", comment_path(comment), method: :delete %>
+        </div>
+      <% end %>
+    </div>	
+    </br>
+  <% end %>
+<% end %>
